@@ -1,0 +1,17 @@
+x=c(1,2,4,8,16)			#create a data vector with specified elements
+x=c(1:10)			#create a data vector with elements 1-10
+sort(x)				#sorts list x increasing
+sort(x, decreasing=TRUE)	#sorts list x decreasing
+vector <- x			#saves vector x as vector 
+x[c(nth,nth)]			#returns the nth value of the vector, vectors start at 0
+list <- as.factor(list)		#converts to a factor, sorts the lsit and combines like values
+runif(n,min,max)		#creates random numbers
+==				#equal to
+!=				#not equal to
+|				#or
+%in%				#within
+sum(x)				#adds the values of the funciton
+length(x)			#gives length of vector
+round(x, digits = n)		#round the values in vector x to n digits
+
+
