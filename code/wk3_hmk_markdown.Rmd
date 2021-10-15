@@ -1,0 +1,53 @@
+---
+title: "**Wk3 hmk**"
+author: "**Robin Battison**"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true    
+    number_sections: true
+---
+# **Loading the Required Packages and Data**
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(vroom) 
+
+to_sort_pop_1 <- vroom("C:/Users/alexa/Desktop/bioinformatics_msc/code/data/Workshop 3/to_sort_pop_1.csv")
+to_sort_pop_2 <- vroom("C:/Users/alexa/Desktop/bioinformatics_msc/code/data/Workshop 3/to_sort_pop_2.csv")
+```
+
+# **Joining the two DataFrames**
+```{r, eval=FALSE}
+sorted_pop <- full_join(to_sort_pop_1, 
+                        to_sort_pop_2)
+```
+
+# **Fighting the Fires the Join Caused**
+```{r, eval=FALSE}
+## pivoting the sorted dataframe around the columns: sp, 1-thr, 2-thr, 3-thr
+long_sorted_pop <- sorted_pop %>% pivot_longer(cols = -c( species,
+                                                          primary_threat,
+                                                          secondary_threat,
+                                                          tertiary_threat)
+                                               )
+## renaming the new column as 'Abundance'
+names(long_sorted_pop)[6] <- c("Abundance")
+
+## two sets of data are included in the name column, splitting three ways by the _ to distinguish pop and date and creating a redundant column
+final_long_pop <- long_sorted_pop %>% separate(name, 
+                                               c("eh", "population","date"),
+                                               "_")
+## deleting the third redundant column 'eh'
+final_long_pop$eh <- NULL
+
+## finally organising the data by ascending date
+species_data <- final_long_pop[order(final_long_pop$date),] 
+```
+
+# **A Nice Neat Table**
+
+```{r, eval = FALSE}
+species_data
+```
