@@ -61,8 +61,8 @@ pollution_plot <- ggplot(data = pollution_threat, aes(x = date_formatted, y = ab
 #======================================================doing it all a better way================================================================================================#
 population_1 <- ggplot(data = long_spp %>% filter(population == "pop_1"), aes(x = date_formatted, y = abundance))
 
-population_1 + facet_wrap(. ~ primary_threat) + geom_line(aes(col=species)) + geom_point(aes(col=species)) + labs(x="Date", y = "Abundance") + ggtitle("Resopnse of Species Abundace in Population 1 Over Time")
+population_1 + facet_wrap(. ~ primary_threat) + geom_line(aes(col=species)) + geom_point(aes(col=species)) + labs(x="Date", y = "Abundance") + ggtitle("Resopnse of Species Abundace in Population 1 Over Time") + theme(plot.title = element_text(hjust = 0.5))
 
 population_2 <- ggplot(data = long_spp %>% filter(population == "pop_2"), aes(x = date_formatted, y = abundance))
 
-population_2 + facet_wrap(. ~ primary_threat) + geom_line(aes(col=species)) + geom_point(aes(col=species)) + labs(x="Date", y = "Abundance") + ggtitle("Resopnse of Species Abundace in Population 2 Over Time") 
+population_2 + facet_wrap(. ~ primary_threat) + geom_line(aes(col=species)) + geom_point(aes(col=species)) + labs(x="Date", y = "Abundance") + ggtitle("Resopnse of Species Abundace in Population 2 Over Time") + theme(plot.title = element_text(hjust = 0.5))
